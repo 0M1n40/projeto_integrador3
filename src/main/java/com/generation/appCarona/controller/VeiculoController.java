@@ -36,7 +36,7 @@ public class VeiculoController {
 
     @GetMapping("/buscar")
     public ResponseEntity<List<Veiculo>> buscarPorTipoVeiculo(@RequestParam String tipoVeiculo) {
-        List<Veiculo> veiculos = veiculoRepository.findByCategoriaContainingIgnoreCase(tipoVeiculo);
+        List<Veiculo> veiculos = veiculoRepository.findByVeiculoContainingIgnoreCase(tipoVeiculo);
         return ResponseEntity.ok(veiculos);
     }
 
