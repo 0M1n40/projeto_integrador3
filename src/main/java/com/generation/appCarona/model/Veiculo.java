@@ -1,6 +1,9 @@
 package com.generation.appCarona.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,9 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-import java.util.List;
 
 @Entity
 @Table(name = "tb_veiculos")
@@ -33,13 +33,13 @@ public class Veiculo {
     
     @OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("veiculo")
-    private List<Produto> viagens;
+    private List<Viagem> viagens;
 
-	public List<Produto> getViagens() {
+	public List<Viagem> getViagens() {
 		return viagens;
 	}
 
-	public void setViagens(List<Produto> viagens) {
+	public void setViagens(List<Viagem> viagens) {
 		this.viagens = viagens;
 	}
 

@@ -1,6 +1,5 @@
 package com.generation.appCarona.service;
 
-//responsável por manipular as regras de negócio de usuário no sistema.
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import com.generation.appCarona.security.JwtService;
 
 
 
-@Service //classe de serviço
+@Service
 public class UsuarioService {
 
 	@Autowired
