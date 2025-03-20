@@ -18,62 +18,62 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.appCarona.model.Produto;
-import com.generation.appCarona.repository.CategoriaRepository;
-import com.generation.appCarona.repository.ProdutoRepository;
+import com.generation.appCarona.model.Viagem;
+import com.generation.appCarona.repository.VeiculoRepository;
+import com.generation.appCarona.repository.ViagemRepository;
 
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/viagens")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
-public class ProdutoController {
+public class ViagemController {
 
 	
 	@Autowired
-	private ProdutoRepository produtoRepository;
+	private ViagemRepository viagemRepository;
 	
 	@Autowired
-	private CategoriaRepository categoriaRepository;
+	private VeiculoRepository veiculoRepository;
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Produto>> getAll(){
-		return ResponseEntity.ok(produtoRepository.findAll());
+	public ResponseEntity<List<Viagem>> getAll(){
+		return ResponseEntity.ok(viagemRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> getById(@PathVariable Long id){
-		return produtoRepository.findById(id)
+	public ResponseEntity<Viagem> getById(@PathVariable Long id){
+		return viagemRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	
 	@GetMapping("/destino/{destino}")
-	public ResponseEntity<List<Produto>> getByTitulo(@PathVariable String destino){
-		return ResponseEntity.ok(produtoRepository.
+	public ResponseEntity<List<Viagem>> getByTitulo(@PathVariable String destino){
+		return ResponseEntity.ok(viagemRepository.
 				findAllByDestinoContainingIgnoreCase(destino));
 	}
 
 	@PostMapping
-	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto){
-		if (categoriaRepository.existsById(produto.getCategoria().getId()))
+	public ResponseEntity<Viagem> post(@Valid @RequestBody Viagem viagem){
+		if (veiculoRepository.existsById(viagem.getVeiculo().getId()))
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(produtoRepository.save(produto));
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Categoria não existe!",null);
+				.body(viagemRepository.save(viagem));
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Veículo não existe!",null);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto){
-		if (produtoRepository.existsById(produto.getId())) {
+	public ResponseEntity<Viagem> put(@Valid @RequestBody Viagem viagem){
+		if (viagemRepository.existsById(viagem.getId())) {
 			
-			if (categoriaRepository.existsById(produto.getCategoria().getId()))
+			if (veiculoRepository.existsById(viagem.getVeiculo().getId()))
 				return ResponseEntity.status(HttpStatus.OK)
-						.body(produtoRepository.save(produto));
+						.body(viagemRepository.save(viagem));
 			
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria não existe", null);
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Veículo não existe", null);
 			
 		}
 		
@@ -85,11 +85,11 @@ public class ProdutoController {
 	@DeleteMapping("/{id}") 
 	public void delete(@PathVariable Long id) { 
 		
-		Optional<Produto> postagem = produtoRepository.findById(id);
+		Optional<Viagem> viagem = viagemRepository.findById(id);
 		
-		if(postagem.isEmpty()) 
+		if(viagem.isEmpty()) 
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		
-		produtoRepository.deleteById(id);
+		viagemRepository.deleteById(id);
 	}
 }
