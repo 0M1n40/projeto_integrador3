@@ -81,10 +81,7 @@ public class ViagemController {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 	
-	
-	
-	
-	
+	// calculo horas e distancia
 	
 	@RestController
 	@RequestMapping("/carona")
@@ -100,8 +97,6 @@ public class ViagemController {
 	        return viagemService.calcularTempoViagem(distancia, velocidade);
 	    }
 	}
-	
-	
 	
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
