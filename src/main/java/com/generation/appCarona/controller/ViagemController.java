@@ -31,83 +31,73 @@ import jakarta.validation.Valid;
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class ViagemController {
 
-	
 	@Autowired
 	private ViagemRepository viagemRepository;
-	
+
 	@Autowired
 	private VeiculoRepository veiculoRepository;
-	
-	
+
 	@GetMapping
-	public ResponseEntity<List<Viagem>> getAll(){
+	public ResponseEntity<List<Viagem>> getAll() {
 		return ResponseEntity.ok(viagemRepository.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Viagem> getById(@PathVariable Long id){
-		return viagemRepository.findById(id)
-				.map(resposta -> ResponseEntity.ok(resposta))
+	public ResponseEntity<Viagem> getById(@PathVariable Long id) {
+		return viagemRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-	
-	
+
 	@GetMapping("/destino/{destino}")
-	public ResponseEntity<List<Viagem>> getByTitulo(@PathVariable String destino){
-		return ResponseEntity.ok(viagemRepository.
-				findAllByDestinoContainingIgnoreCase(destino));
+	public ResponseEntity<List<Viagem>> getByTitulo(@PathVariable String destino) {
+		return ResponseEntity.ok(viagemRepository.findAllByDestinoContainingIgnoreCase(destino));
 	}
 
 	@PostMapping
-	public ResponseEntity<Viagem> post(@Valid @RequestBody Viagem viagem){
+	public ResponseEntity<Viagem> post(@Valid @RequestBody Viagem viagem) {
 		if (veiculoRepository.existsById(viagem.getVeiculo().getId()))
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(viagemRepository.save(viagem));
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Veículo não existe!",null);
+			return ResponseEntity.status(HttpStatus.CREATED).body(viagemRepository.save(viagem));
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Veículo não existe!", null);
 	}
-	
-	@PutMapping
-	public ResponseEntity<Viagem> put(@Valid @RequestBody Viagem viagem){
-		if (viagemRepository.existsById(viagem.getId())) {
-			
-			if (veiculoRepository.existsById(viagem.getVeiculo().getId()))
-				return ResponseEntity.status(HttpStatus.OK)
-						.body(viagemRepository.save(viagem));
-			
+
+	@PutMapping("/{id}")
+	public ResponseEntity<Viagem> put(@PathVariable Long id, @Valid @RequestBody Viagem viagem) {
+		if (!viagemRepository.existsById(id)) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		if (!veiculoRepository.existsById(viagem.getVeiculo().getId())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Veículo não existe", null);
-			
 		}
 		
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		viagem.setId(id);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(viagemRepository.save(viagem));
 	}
-	
+
 	// calculo horas e distancia
-	
+
 	@RestController
 	@RequestMapping("/carona")
 	public class CaronaController {
 
-	    @Autowired
-	    private ViagemService viagemService;
+		@Autowired
+		private ViagemService viagemService;
 
-	    @GetMapping("/calcular-tempo")
-	    public double calcularTempo(
-	            @RequestParam double distancia,
-	            @RequestParam double velocidade) {
-	        return viagemService.calcularTempoViagem(distancia, velocidade);
-	    }
+		@GetMapping("/calcular-tempo")
+		public double calcularTempo(@RequestParam double distancia, @RequestParam double velocidade) {
+			return viagemService.calcularTempoViagem(distancia, velocidade);
+		}
 	}
-	
-	
+
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("/{id}") 
-	public void delete(@PathVariable Long id) { 
-		
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+
 		Optional<Viagem> viagem = viagemRepository.findById(id);
-		
-		if(viagem.isEmpty()) 
+
+		if (viagem.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		
+
 		viagemRepository.deleteById(id);
 	}
 }
