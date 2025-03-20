@@ -30,6 +30,18 @@ public class Veiculo {
     
     @NotBlank(message = "A categoria do veículo é obrigatória!")
     private String tipoVeiculo;
+    
+    @OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("veiculo")
+    private List<Produto> viagens;
+
+	public List<Produto> getViagens() {
+		return viagens;
+	}
+
+	public void setViagens(List<Produto> viagens) {
+		this.viagens = viagens;
+	}
 
 	public Long getId() {
 		return id;
