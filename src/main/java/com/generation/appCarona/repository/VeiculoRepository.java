@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.generation.appCarona.model.Veiculo;
 
 @Repository
-public  interface CategoriaRepository extends JpaRepository<Veiculo, Long>{
-	List<Veiculo> findAllByNomeContainingIgnoreCase(String nome);
+public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
+	List<Veiculo> findByCategoriaContainingIgnoreCase(String tipoVeiculo);
+	
 	
 }
