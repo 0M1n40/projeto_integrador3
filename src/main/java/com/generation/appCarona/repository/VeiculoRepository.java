@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.generation.appCarona.model.Veiculo;
 
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
-	List<Veiculo> findByVeiculoContainingIgnoreCase(String tipoVeiculo);
+	List<Veiculo> findByTipoVeiculoContainingIgnoreCase(String tipoVeiculo);
 	
 	
 }
