@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class Produto {
+public class Viagem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,17 +31,8 @@ public class Produto {
 	private double distancia;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("produto")
-	private Categoria categoria;
-
-	
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
+	@JsonIgnoreProperties("viagem")
+	private Veiculo veiculo;
 
 	public Long getId() {
 		return id;
@@ -82,6 +73,13 @@ public class Produto {
 	public void setDistancia(double distancia) {
 		this.distancia = distancia;
 	}
-	
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
 	
 }

@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.generation.appCarona.model.Produto;
+import com.generation.appCarona.model.Viagem;
 
 
 
-public interface ProdutoRepository extends JpaRepository<Produto,Long>{
+public interface ViagemRepository extends JpaRepository<Viagem,Long>{
 	
-	public List<Produto> 
+	public List<Viagem> 
 	findAllByDestinoContainingIgnoreCase(@Param("Destino") String destino);
 
 }
