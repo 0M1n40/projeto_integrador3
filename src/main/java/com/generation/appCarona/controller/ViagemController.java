@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,7 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.generation.appCarona.model.Viagem;
 import com.generation.appCarona.repository.VeiculoRepository;
 import com.generation.appCarona.repository.ViagemRepository;
-
+import com.generation.appCarona.service.ViagemService;
 
 import jakarta.validation.Valid;
 
@@ -79,6 +80,28 @@ public class ViagemController {
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
+	
+	
+	
+	
+	
+	
+	@RestController
+	@RequestMapping("/carona")
+	public class CaronaController {
+
+	    @Autowired
+	    private ViagemService viagemService;
+
+	    @GetMapping("/calcular-tempo")
+	    public double calcularTempo(
+	            @RequestParam double distancia,
+	            @RequestParam double velocidade) {
+	        return viagemService.calcularTempoViagem(distancia, velocidade);
+	    }
+	}
+	
+	
 	
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)

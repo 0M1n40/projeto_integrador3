@@ -1,5 +1,7 @@
 package com.generation.appCarona.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,17 +38,17 @@ public class Usuario {
 
 	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres.")
 	private String foto;
-	
-	
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Veiculo> veiculo;
+
 	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.foto = foto;
-	}
-
-	public Usuario() {
 	}
 
 	public Long getId() {
@@ -87,6 +89,14 @@ public class Usuario {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public List<Veiculo> getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(List<Veiculo> veiculo) {
+		this.veiculo = veiculo;
 	}
 
 }
