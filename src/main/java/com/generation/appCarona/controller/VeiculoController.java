@@ -18,12 +18,12 @@ public class VeiculoController {
     @Autowired
     private VeiculoRepository veiculoRepository;
 
-    @PostMapping
+    @PostMapping ("/cadastrar")
     public ResponseEntity<Veiculo> criarVeiculo(@RequestBody Veiculo veiculo) {
         return ResponseEntity.status(HttpStatus.CREATED).body(veiculoRepository.save(veiculo));
     }
 
-    @GetMapping
+    @GetMapping ("/all")
     public ResponseEntity<List<Veiculo>> listarVeiculos() {
         return ResponseEntity.ok(veiculoRepository.findAll());
     }
@@ -65,4 +65,3 @@ public class VeiculoController {
 
 	    
 	
-

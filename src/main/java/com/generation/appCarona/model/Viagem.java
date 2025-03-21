@@ -35,7 +35,7 @@ public class Viagem {
 	private double distancia;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("viagem")
+	@JsonIgnoreProperties("viagens")
 	private Veiculo veiculo;
 
 	public Long getId() {

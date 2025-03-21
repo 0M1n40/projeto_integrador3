@@ -31,14 +31,18 @@ public class Veiculo {
 
 	@NotBlank(message = "A categoria do veículo é obrigatória!")
 	private String tipoVeiculo;
+	
 
 	@OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnoreProperties("veiculo")
 	private List<Viagem> viagens;
 
 	@ManyToOne
-	@JsonIgnoreProperties("usuario")
+	@JsonIgnoreProperties("veiculo")
 	private Usuario usuario;
+	
+	
+	
 
 	public List<Viagem> getViagens() {
 		return viagens;
