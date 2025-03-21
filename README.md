@@ -10,7 +10,7 @@ O **VaiComigo!** é um aplicativo de caronas inteligentes que conecta motoristas
 2️⃣ **Passageiros** inserem seus destinos.  
 3️⃣ Se houver compatibilidade de rotas, o sistema sugere a conexão e a carona pode ser confirmada com um **match**! 😉  
 
-No **VaiComigo!**, motoristas e passageiros colaboram para tornar o deslocamento mais **econômico, seguro e eficiente**.  
+No **VaiComigo!** motoristas e passageiros colaboram para tornar o deslocamento mais **econômico, seguro e eficiente**.  
 
 ---
 
@@ -59,5 +59,5 @@ O **VaiComigo!** gerencia três entidades principais: **Usuário, Veículo e Via
 | **Carolina Gonçalves** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/carolgonc) |
 | **Desiree Ferreira** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/desireeferreira) |
 | **Ana Kelys** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/anakelys) |
-| **0M1n40** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/0M1n40) |
+| **Mina Monteiro** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/0M1n40) |
 | **Laura Azevedo** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/laura-azevedo) |
