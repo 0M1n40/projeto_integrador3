@@ -54,10 +54,10 @@ O **VaiComigo!** gerencia três entidades principais: **Usuário, Veículo e Via
 
 | Nome | GitHub |
 |------|--------|
-| **Laís A.** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/LA1SA0) |
+| **Laísa F. Silva** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/LA1SA0) |
 | **Beatriz Correa** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/correabeas) |
-| **Carolina Gonçalves** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/carolgonc) |
+| **Caroliny Gonçalves** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/carolgonc) |
 | **Desiree Ferreira** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/desireeferreira) |
-| **Ana Kelys** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/anakelys) |
+| **Ana Kely** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/anakelys) |
 | **Mina Monteiro** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/0M1n40) |
 | **Laura Azevedo** | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/laura-azevedo) |
